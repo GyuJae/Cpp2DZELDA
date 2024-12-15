@@ -8,3 +8,15 @@ using uint8		= unsigned __int8;
 using uint16	= unsigned __int16;
 using uint32	= unsigned __int32;
 using uint64	= unsigned __int64;
+
+class Pos
+{
+public:
+	Pos(float y, float x) : _x(x), _y(y) {};
+
+	float GetX() const { return _x; }
+	float GetY() const { return _y; }
+private:
+	float _x;
+	float _y;
+};

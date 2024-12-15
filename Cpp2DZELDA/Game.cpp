@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "TimeManager.h"
 #include "InputManager.h"
+#include "SceneManager.h"
 
 Game::Game()
 {
@@ -9,6 +10,7 @@ Game::Game()
 
 Game::~Game()
 {
+	_CrtDumpMemoryLeaks();
 }
 
 void Game::Init(HWND hwnd)
@@ -18,18 +20,26 @@ void Game::Init(HWND hwnd)
 
 	GET_SINGLE(TimeManager)->Init();
 	GET_SINGLE(InputManager)->Init(hwnd);
+	GET_SINGLE(SceneManager)->Init();
+
+	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Development);
 }
 
 void Game::Update()
 {
 	GET_SINGLE(TimeManager)->Update();
 	GET_SINGLE(InputManager)->Update();
+	GET_SINGLE(SceneManager)->Update();
 }
 
 void Game::Render()
 {
 	uint32 fps = GET_SINGLE(TimeManager)->GetFps();
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
+	
+	{
+		GET_SINGLE(SceneManager)->Render(hdc);
+	}
 
 	{
 		POINT mousePos = GET_SINGLE(InputManager)->GetMousePos();
@@ -45,4 +55,5 @@ void Game::Render()
 	{
 		// TODO Double Buffering
 	}
+
 }

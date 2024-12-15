@@ -4,6 +4,7 @@
 #include "Values.h"
 #include "Enums.h"
 #include "Defines.h"
+#include "Utils.h"
 
 #include <windows.h>
 #include <vector>
