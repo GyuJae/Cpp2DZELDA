@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "TimeManager.h"
+#include "InputManager.h"
 
 Game::Game()
 {
@@ -16,11 +17,13 @@ void Game::Init(HWND hwnd)
 	this->hdc = ::GetDC(hwnd);
 
 	GET_SINGLE(TimeManager)->Init();
+	GET_SINGLE(InputManager)->Init(hwnd);
 }
 
 void Game::Update()
 {
 	GET_SINGLE(TimeManager)->Update();
+	GET_SINGLE(InputManager)->Update();
 }
 
 void Game::Render()
@@ -29,7 +32,9 @@ void Game::Render()
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 
 	{
-		// TODO Mouse Point Render
+		POINT mousePos = GET_SINGLE(InputManager)->GetMousePos();
+		auto str = L"Mouse:" + to_wstring(mousePos.x) + L", " + to_wstring(mousePos.y);
+		::TextOut(hdc, 10, 30, str.c_str(), static_cast<int>(str.length()));
 	}
 
 	{
