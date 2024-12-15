@@ -13,6 +13,7 @@ public:
 
 	void Render(HDC hdc) override;
 
-
+private:
+	Pos _pos = Pos(300, 300);
 };
 

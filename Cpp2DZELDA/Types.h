@@ -16,6 +16,9 @@ public:
 
 	float GetX() const { return _x; }
 	float GetY() const { return _y; }
+
+	void SetX(float x) { _x = x; }
+	void SetY(float y) { _y = y; }
 private:
 	float _x;
 	float _y;
