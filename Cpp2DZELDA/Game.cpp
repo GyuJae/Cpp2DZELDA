@@ -18,6 +18,15 @@ void Game::Init(HWND hwnd)
 	this->_hwnd = hwnd;
 	this->hdc = ::GetDC(hwnd);
 
+	// Double Buffering
+	::GetClientRect(hwnd, &this->_rect);
+
+	this->hdcBack = ::CreateCompatibleDC(this->hdc);
+	this->_bmpBack = ::CreateCompatibleBitmap(this->hdc, this->_rect.right, this->_rect.bottom);
+	HBITMAP prev = (HBITMAP)::SelectObject(this->hdcBack, this->_bmpBack);
+	::DeleteObject(prev);
+	
+
 	GET_SINGLE(TimeManager)->Init();
 	GET_SINGLE(InputManager)->Init(hwnd);
 	GET_SINGLE(SceneManager)->Init();
@@ -38,22 +47,23 @@ void Game::Render()
 	float deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 	
 	{
-		GET_SINGLE(SceneManager)->Render(hdc);
+		GET_SINGLE(SceneManager)->Render(this->hdcBack);
 	}
 
 	{
 		POINT mousePos = GET_SINGLE(InputManager)->GetMousePos();
 		auto str = L"Mouse:" + to_wstring(mousePos.x) + L", " + to_wstring(mousePos.y);
-		::TextOut(hdc, 10, 30, str.c_str(), static_cast<int>(str.length()));
+		::TextOut(this->hdcBack, 10, 30, str.c_str(), static_cast<int>(str.length()));
 	}
 
 	{
 		wstring str = L"FPS : " + to_wstring(fps) + L" DT : " + to_wstring(deltaTime);
-		::TextOut(hdc, 10, 10, str.c_str(), static_cast<int>(str.length()));
+		::TextOut(this->hdcBack, 10, 10, str.c_str(), static_cast<int>(str.length()));
 	}
 
 	{
-		// TODO Double Buffering
+		::BitBlt(this->hdc, 0, 0, this->_rect.right, this->_rect.bottom, this->hdcBack, 0, 0, SRCCOPY);
+		::PatBlt(this->hdcBack, 0, 0, this->_rect.right, this->_rect.bottom, WHITENESS);
 	}
 
 }
