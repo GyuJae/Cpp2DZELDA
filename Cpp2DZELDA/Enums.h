@@ -4,4 +4,5 @@ enum class SceneType
 {
 	None,
 	Development,
+	Game,
 };

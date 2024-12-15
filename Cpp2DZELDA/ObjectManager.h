@@ -15,8 +15,7 @@ public:
 	template <typename T>
 	T* CreateObject()
 	{
-		static_assert(std::is_convertible<T*, Object>);
-
+		static_assert(is_convertible_v<T*, Object*>);
 		T* object = new T();
 		object->Init();
 

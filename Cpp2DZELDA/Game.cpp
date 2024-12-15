@@ -31,7 +31,7 @@ void Game::Init(HWND hwnd)
 	GET_SINGLE(InputManager)->Init(hwnd);
 	GET_SINGLE(SceneManager)->Init();
 
-	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Development);
+	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Game);
 }
 
 void Game::Update()

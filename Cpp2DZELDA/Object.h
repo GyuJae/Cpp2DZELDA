@@ -10,13 +10,14 @@ enum class ObjectType
 class Object
 {
 public:
-	Object(ObjectType type) {};
+	Object(ObjectType type);
 	virtual ~Object();
 
 	virtual void Init() abstract;
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
+public:
 	ObjectType GetType() { return _type; }
 	Pos GetPos() { return _pos; }
 	void SetPos(Pos pos) { _pos = pos; }
