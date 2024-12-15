@@ -15,6 +15,9 @@
     <Filter Include="소스 파일\00. MainGame">
       <UniqueIdentifier>{88040db6-54b6-4cd2-afda-d5d582637020}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Managers">
+      <UniqueIdentifier>{e8a72cf5-0856-4c58-b2ea-6fb58cf4962b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -44,6 +47,12 @@
     <ClInclude Include="Enums.h">
       <Filter>소스 파일\99. Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>소스 파일\00. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>소스 파일\01. Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -51,6 +60,12 @@
     </ClCompile>
     <ClCompile Include="Cpp2DZELDA.cpp">
       <Filter>소스 파일\00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>소스 파일\00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>소스 파일\01. Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

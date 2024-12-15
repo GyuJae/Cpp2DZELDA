@@ -1,8 +1,11 @@
 ﻿#include "pch.h"
 #include "framework.h"
 #include "Cpp2DZELDA.h"
+#include "Game.h"
 
 #define MAX_LOADSTRING 100
+
+HWND g_hwnd;
 
 HINSTANCE hInst;                                
 WCHAR szTitle[MAX_LOADSTRING];                  
@@ -32,15 +35,31 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_CPP2DZELDA));
 
-    MSG msg;
+    Game game;
+    game.Init(g_hwnd);
 
-    while (GetMessage(&msg, nullptr, 0, 0))
+    MSG msg = {};
+	uint64 prevTick = ::GetTickCount64();
+
+    while (msg.message != WM_QUIT)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
+		if (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
+			::TranslateMessage(&msg);
+			::DispatchMessage(&msg);
+		}
+		else
+		{
+			uint64 now = ::GetTickCount64();
+
+			//if (now - prevTick >= 30)
+			{
+				game.Update();
+				game.Render();
+
+				prevTick = now;
+			}
+		}
     }
 
     return (int) msg.wParam;
@@ -83,6 +102,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
        nullptr,
        hInstance,
        nullptr);
+
+   g_hwnd = hWnd;
 
    if (!hWnd)
    {
