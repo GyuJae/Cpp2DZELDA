@@ -12,6 +12,7 @@ using uint64	= unsigned __int64;
 class Pos
 {
 public:
+	Pos() : _x(0), _y(0) {};
 	Pos(float y, float x) : _x(x), _y(y) {};
 
 	float GetX() const { return _x; }

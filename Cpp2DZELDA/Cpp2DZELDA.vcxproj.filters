@@ -98,6 +98,9 @@
     <ClInclude Include="GameScene.h">
       <Filter>소스 파일\02. Scenes\Game</Filter>
     </ClInclude>
+    <ClInclude Include="EditScene.h">
+      <Filter>소스 파일\02. Scenes\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -143,6 +146,9 @@
       <Filter>소스 파일\01. Managers</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
+      <Filter>소스 파일\02. Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EditScene.cpp">
       <Filter>소스 파일\02. Scenes\Game</Filter>
     </ClCompile>
   </ItemGroup>
