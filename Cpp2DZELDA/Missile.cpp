@@ -18,9 +18,14 @@ void Missile::Init()
 
 void Missile::Update()
 {
-	auto delta = GET_SINGLE(TimeManager)->GetDeltaTime();
+	auto deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 
-	this->_pos.SetY(this->_pos.GetY() - 1000 * delta);
+	auto speed = 1000.f;
+
+	//this->_pos.SetY(this->_pos.GetY() - speed * delta);
+	this->_pos.SetX(this->GetX() + speed * deltaTime * ::cos(this->_angle));
+	this->_pos.SetY(this->GetY() - speed * deltaTime * ::sin(this->_angle));
+
 
 	// Ãæµ¹
 	const vector<Object*> objects = GET_SINGLE(ObjectManager)->GetObjects();
