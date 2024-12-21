@@ -71,6 +71,11 @@ struct Vector {
 		return x * other.GetX() + y * other.GetY();
 	}
 
+	float Cross(Vector other)
+	{
+		return x * other.y - y * other.x;
+	}
+
 	float x = 0;
 	float y = 0;
 
