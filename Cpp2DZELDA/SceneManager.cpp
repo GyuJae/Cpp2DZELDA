@@ -63,3 +63,8 @@ void SceneManager::ChangeScene(SceneType sceneType)
 		this->_scene->Init();
 	}
 }
+
+Scene* SceneManager::GetCurrentScene()
+{
+	return this->_scene;
+}

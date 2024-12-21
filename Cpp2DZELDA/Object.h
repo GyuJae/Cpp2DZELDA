@@ -7,6 +7,12 @@ enum class ObjectType
 	Enemy,
 };
 
+enum class MoveDir
+{
+	Left,
+	Right,
+};
+
 class Object
 {
 public:
@@ -19,11 +25,17 @@ public:
 
 public:
 	ObjectType GetType() { return _type; }
-	Pos GetPos() { return _pos; }
-	void SetPos(Pos pos) { _pos = pos; }
+
+	Vector GetPos() { return _pos; }
+	void SetPos(Vector pos) { _pos = pos; }
+
+	float	GetRadius() { return _radius; }
 
 protected:
-	ObjectType _type = ObjectType::None;
-	Pos _pos = Pos(0, 0);
+	ObjectType	_type = ObjectType::None;
+	MoveDir		_dir = MoveDir::Right;
+	Stat		_stat = {};
+	Vector		_pos = {};
+	float		_radius = 0.f;
 };
 

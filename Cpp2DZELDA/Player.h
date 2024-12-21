@@ -1,20 +1,40 @@
 #pragma once
+
 #include "Object.h"
 
-class Player: public Object
+enum class PlayerType
 {
-	using Super = Object;
+	MissileTank,
+	CannonTank,
+};
+
+class Player : public Object
+{
 public:
 	Player();
-	virtual ~Player();
-	void Init() override;
-	void Update() override;
-	void Render(HDC hdc) override;
+	virtual ~Player() override;
 
-	Pos GetFirePos() const;
+	virtual void Init() override;
+	virtual void Update() override;
+	virtual void Render(HDC hdc) override;
+
+	wstring		GetMeshKey();
+
+	void		SetPlayerId(int32 playerId) { _playerId = playerId; }
+	void		SetPlayerType(PlayerType playerType) { _playerType = playerType; }
+	void		SetPlayerTurn(bool playerTurn) { _playerTurn = playerTurn; }
+
+	int32		GetPlayerId() { return _playerId; }
+	PlayerType	GetPlayerType() { return _playerType; }
+	bool		GetPlayerTurn() { return _playerTurn; }
 
 private:
-	float _barrelAngle = 0.f;
-	float _barrelLength = 100.f;
+	void		UpdateFireAngle();
+
+private:
+	int32		_playerId = 0;
+	PlayerType	_playerType = PlayerType::MissileTank;
+	bool		_playerTurn = false;
+	float		_fireAngle = 0.f;
 };
 

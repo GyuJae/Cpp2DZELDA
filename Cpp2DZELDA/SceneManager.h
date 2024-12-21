@@ -17,5 +17,7 @@ public:
 private:
 	Scene* _scene;
 	SceneType _sceneType;
+public:
+	Scene* GetCurrentScene();
 };
 
