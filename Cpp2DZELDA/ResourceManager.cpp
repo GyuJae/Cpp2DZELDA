@@ -9,10 +9,33 @@ ResourceManager::~ResourceManager()
 
 void ResourceManager::Init()
 {
-	LineMesh* mesh = new LineMesh();
-	mesh->Load(L"Player.txt");
+	// 포트리스 메뉴
+	{
+		LineMesh* mesh = new LineMesh();
+		mesh->Load(L"Menu.txt");
+		_lineMeshes[L"Menu"] = mesh;
+	}
 
-	_lineMeshes[L"Player"] = mesh;
+	// 포트리스 UI
+	{
+		LineMesh* mesh = new LineMesh();
+		mesh->Load(L"UI.txt");
+		_lineMeshes[L"UI"] = mesh;
+	}
+
+	// 미사일 탱크
+	{
+		LineMesh* mesh = new LineMesh();
+		mesh->Load(L"MissileTank.txt");
+		_lineMeshes[L"MissileTank"] = mesh;
+	}
+
+	// 캐논 탱크
+	{
+		LineMesh* mesh = new LineMesh();
+		mesh->Load(L"CanonTank.txt");
+		_lineMeshes[L"CanonTank"] = mesh;
+	}
 }
 
 void ResourceManager::Clear()

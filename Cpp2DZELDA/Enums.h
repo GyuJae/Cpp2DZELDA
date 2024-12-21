@@ -5,5 +5,9 @@ enum class SceneType
 	None,
 	Development,
 	Game,
-	Edit
+	Edit,
+
+	// Fortress
+	FortressMenu,
+	Fortress,
 };

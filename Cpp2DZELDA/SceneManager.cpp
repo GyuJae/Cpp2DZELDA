@@ -3,6 +3,8 @@
 #include "DevScene.h"
 #include "GameScene.h"
 #include "EditScene.h"
+#include "MenuScene.h"
+#include "FortressScene.h"
 
 void SceneManager::Init()
 {
@@ -41,6 +43,12 @@ void SceneManager::ChangeScene(SceneType sceneType)
 		break;
 	case SceneType::Edit:
 		newScene = new EditScene();
+		break;
+	case SceneType::Fortress:
+		newScene = new FortressScene();
+		break;
+	case SceneType::FortressMenu:
+		newScene = new MenuScene();
 		break;
 	default:
 		break;

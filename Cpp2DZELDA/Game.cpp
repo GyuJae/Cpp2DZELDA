@@ -35,7 +35,7 @@ void Game::Init(HWND hwnd)
 	GET_SINGLE(InputManager)->Init(hwnd);
 	GET_SINGLE(SceneManager)->Init();
 	GET_SINGLE(ResourceManager)->Init();
-	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Game);
+	GET_SINGLE(SceneManager)->ChangeScene(SceneType::FortressMenu);
 }
 
 void Game::Update()
