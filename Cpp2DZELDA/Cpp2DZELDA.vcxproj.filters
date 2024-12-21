@@ -36,6 +36,12 @@
     <Filter Include="소스 파일\04. Resources\Game">
       <UniqueIdentifier>{e4e442b5-fca3-4143-87ee-5b431f8620aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. Managers\Game">
+      <UniqueIdentifier>{3803b26e-2dde-4916-a554-a5e503cdf02e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scenes\Game\Fortress">
+      <UniqueIdentifier>{fc9bdf97-ff36-4afc-8943-2d3dd00ca7c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -116,6 +122,15 @@
     <ClInclude Include="LineMesh.h">
       <Filter>소스 파일\04. Resources\Game</Filter>
     </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>소스 파일\01. Managers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>소스 파일\02. Scenes\Game\Fortress</Filter>
+    </ClInclude>
+    <ClInclude Include="FortressScene.h">
+      <Filter>소스 파일\02. Scenes\Game\Fortress</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -174,6 +189,15 @@
     </ClCompile>
     <ClCompile Include="LineMesh.cpp">
       <Filter>소스 파일\04. Resources\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>소스 파일\01. Managers\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>소스 파일\02. Scenes\Game\Fortress</Filter>
+    </ClCompile>
+    <ClCompile Include="FortressScene.cpp">
+      <Filter>소스 파일\02. Scenes\Game\Fortress</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
