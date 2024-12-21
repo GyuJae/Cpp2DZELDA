@@ -3,6 +3,7 @@
 #include "TimeManager.h"
 #include "InputManager.h"
 #include "SceneManager.h"
+#include "ResourceManager.h"
 
 Game::Game()
 {
@@ -10,7 +11,10 @@ Game::Game()
 
 Game::~Game()
 {
+	GET_SINGLE(ResourceManager)->Clear();
+
 	_CrtDumpMemoryLeaks();
+
 }
 
 void Game::Init(HWND hwnd)
@@ -30,8 +34,8 @@ void Game::Init(HWND hwnd)
 	GET_SINGLE(TimeManager)->Init();
 	GET_SINGLE(InputManager)->Init(hwnd);
 	GET_SINGLE(SceneManager)->Init();
-
-	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Edit);
+	GET_SINGLE(ResourceManager)->Init();
+	GET_SINGLE(SceneManager)->ChangeScene(SceneType::Game);
 }
 
 void Game::Update()
