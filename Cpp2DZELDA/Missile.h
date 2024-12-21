@@ -16,5 +16,10 @@ public:
 
 private:
 	float _angle = 0.f;
+
+private: 
+	// 추적 기능
+	float _sumTime = 0.f;
+	Object* _target = nullptr; // Warining: This is a pointer to an object that may be deleted.
 };
 

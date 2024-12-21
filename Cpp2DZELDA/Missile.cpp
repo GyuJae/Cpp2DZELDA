@@ -20,11 +20,42 @@ void Missile::Update()
 {
 	auto deltaTime = GET_SINGLE(TimeManager)->GetDeltaTime();
 
-	auto speed = 1000.f;
+	auto speed = 600.f;
 
-	//this->_pos.SetY(this->_pos.GetY() - speed * delta);
-	this->_pos.SetX(this->GetX() + speed * deltaTime * ::cos(this->_angle));
-	this->_pos.SetY(this->GetY() - speed * deltaTime * ::sin(this->_angle));
+	if (this->_target == nullptr)
+	{
+		//this->_pos.SetY(this->_pos.GetY() - speed * delta);
+		this->_pos.SetX(this->GetX() + speed * deltaTime * ::cos(this->_angle));
+		this->_pos.SetY(this->GetY() - speed * deltaTime * ::sin(this->_angle));
+
+		// 0.2초 후에 유도탄
+		_sumTime += deltaTime;
+		if (_sumTime >= 0.2f)
+		{
+			// 첫번째 타겟 서치
+			const vector<Object*>& objects = GET_SINGLE(ObjectManager)->GetObjects();
+			for (Object* object : objects)
+			{
+				if (object->GetType() == ObjectType::Enemy)
+				{
+					_target = object;
+					break;
+				}
+			}
+		}
+	}
+	else 
+	{
+		Vector dir = this->_target->GetPos() - this->GetPos();
+		dir.Normalize();
+
+		// ????
+		_target->SetPos(_target->GetPos());
+
+		_pos += dir * deltaTime * speed;
+	}
+
+
 
 
 	// 충돌
