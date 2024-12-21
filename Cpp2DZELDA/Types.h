@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <windows.h>
 
 using int8		= __int8;
 using int16		= __int16;
@@ -13,6 +14,7 @@ using uint64	= unsigned __int64;
 struct Vector {
 	Vector() : x(0), y(0) {};
 	Vector(float x, float y) : x(x), y(y) {};
+	Vector(POINT pt) : x((float)pt.x), y((float)pt.y) {}
 
 	Vector operator+ (const Vector& rhs) {
 		return Vector(x + rhs.x, y + rhs.y);
@@ -62,6 +64,11 @@ struct Vector {
 
 		x /= length;
 		y /= length;
+	}
+
+	float Dot(Vector other)
+	{
+		return x * other.GetX() + y * other.GetY();
 	}
 
 	float x = 0;

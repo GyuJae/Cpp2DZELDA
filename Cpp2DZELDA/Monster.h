@@ -9,5 +9,9 @@ public:
 	void Init() override;
 	void Update() override;
 	void Render(HDC hdc) override;
+
+private:
+	Vector _start = { 300, 100 };
+	Vector _end = { 600, 250 };
 };
 

@@ -8,20 +8,24 @@
 
 void GameScene::Init()
 {
+	Monster* monster = GET_SINGLE(ObjectManager)->CreateObject<Monster>();
+	monster->SetPos(Pos{ 400, 400 });
+	GET_SINGLE(ObjectManager)->Add(monster);
+
 	{
-		Player* player = GET_SINGLE(ObjectManager)->CreateObject<Player>();
+		/*Player* player = GET_SINGLE(ObjectManager)->CreateObject<Player>();
 		player->SetPos(Pos{ 400, 400 });
-		GET_SINGLE(ObjectManager)->Add(player);
+		GET_SINGLE(ObjectManager)->Add(player);*/
 	}
 
 	{
-		for (int i = 0; i < 5; i++)
+		/*for (int i = 0; i < 5; i++)
 		{
 			Monster* monster = GET_SINGLE(ObjectManager)->CreateObject<Monster>();
 			float index = static_cast<float>(i);
-			monster->SetPos(Pos{  100.0f, 100.0f + index * 100.0f });
+			monster->SetPos(Pos{  100.0f + index * 100.0f, 100.0f });
 			GET_SINGLE(ObjectManager)->Add(monster);
-		}
+		}*/
 	}
 }
 
